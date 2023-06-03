@@ -2,8 +2,9 @@
   "name": "cryptic-crossword-bot",
   "version": "0.0.1",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && yarn register",
     "start": "node build/main.js",
+    "register": "ts-node scripts/register.ts",
     "dev": "nodemon main.ts"
   },
   "dependencies": {
