@@ -1,11 +1,9 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
-import dotenv from "dotenv";
 import express from "express";
+import * as Env from "./src/Env";
 import commands from "./src/commands";
 
-dotenv.config();
-
-const port = process.env.PORT || 3000;
+const port = Env.getOr("PORT", "3000");
 
 const app = express();
 

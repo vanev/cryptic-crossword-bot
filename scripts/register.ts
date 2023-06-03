@@ -1,14 +1,6 @@
-import dotenv from "dotenv";
 import { REST, Routes } from "discord.js";
+import * as Env from "../src/Env";
 import commands from "../src/commands";
-
-dotenv.config();
-
-const token = process.env.DISCORD_BOT_TOKEN;
-if (!token) throw new Error("Missing discord bot token.");
-
-const applicationId = process.env.DISCORD_APPLICATION_ID;
-if (!applicationId) throw new Error("Missing discord bot token.");
 
 console.log("✳️ Starting Command Registration");
 
@@ -18,13 +10,12 @@ for (const [_name, command] of commands) {
   body.push(command.data.toJSON());
 }
 
+const token = Env.getRequired("DISCORD_BOT_TOKEN");
 const rest = new REST().setToken(token);
 
+const appId = Env.getRequired("DISCORD_APPLICATION_ID");
+
 rest
-  .put(Routes.applicationCommands(applicationId), { body })
-  .then(() => {
-    console.log("✅ Registered commands.");
-  })
-  .catch((reason) => {
-    console.error(`🚨 ${reason}`);
-  });
+  .put(Routes.applicationCommands(appId), { body })
+  .then(() => console.log("✅ Registered commands."))
+  .catch((reason) => console.error(`🚨 ${reason}`));
