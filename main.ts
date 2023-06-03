@@ -1,3 +1,4 @@
+import { Client, Events, GatewayIntentBits } from "discord.js";
 import dotenv from "dotenv";
 import express from "express";
 
@@ -14,3 +15,13 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`✳️ Application started. Listening on port ${port}.`);
 });
+
+const client = new Client({
+  intents: [GatewayIntentBits.Guilds],
+});
+
+client.once(Events.ClientReady, ({ user }) => {
+  console.log(`🤖Ready. Logged in as ${user.tag}.`);
+});
+
+client.login(process.env.DISCORD_BOT_TOKEN);
