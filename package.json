@@ -2,7 +2,8 @@
   "name": "cryptic-crossword-bot",
   "version": "0.0.1",
   "scripts": {
-    "start": "tsc && node build/main.js",
+    "build": "tsc",
+    "start": "node build/main.js",
     "dev": "nodemon main.ts"
   },
   "dependencies": {
