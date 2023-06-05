@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from "discord.js";
 
 interface Command {
-  data: SlashCommandBuilder;
+  data: Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">;
   execute: (interaction: ChatInputCommandInteraction) => Promise<unknown>;
 }
 
