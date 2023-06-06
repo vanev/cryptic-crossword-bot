@@ -26,12 +26,12 @@ client.once(Events.ClientReady, ({ user }) => {
 client.on(Events.InteractionCreate, (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
+  console.log(`🤖 /${interaction.commandName} starting`);
+
   const command = commands.get(interaction.commandName);
 
   if (!command) {
-    console.error(
-      `🚨 Could not find command called ${interaction.commandName}.`
-    );
+    console.error(`🚨 /${interaction.commandName} missing`);
     return;
   }
 
@@ -53,7 +53,7 @@ client.on(Events.InteractionCreate, (interaction) => {
       }
     })
     .then(() => {
-      console.log(`🤖 ${interaction.commandName} handled.`);
+      console.log(`🤖 /${interaction.commandName} completed`);
     });
 });
 

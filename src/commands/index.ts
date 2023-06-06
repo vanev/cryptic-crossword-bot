@@ -1,9 +1,9 @@
 import { Collection } from "discord.js";
 import Command from "../Command";
-import ping from "./ping";
+import clue from "./clue";
 
 const commands = new Collection<string, Command>();
 
-commands.set(ping.data.name, ping);
+commands.set(clue.data.name, clue);
 
 export default commands;
