@@ -129,7 +129,7 @@ describe("clue.execute", () => {
         )
         .then(() => {
           expect(interaction.reply).toHaveBeenCalledWith(
-            "Touchy having failed to finish exam (4)"
+            "UUID: 1 🔎 Touchy having failed to finish exam (4)"
           );
         });
     });
