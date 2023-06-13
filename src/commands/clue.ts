@@ -42,7 +42,9 @@ const clue: Command = {
           });
         }
 
-        return interaction.reply(clue.value.clue);
+        return interaction.reply(
+          `UUID: ${clue.value.uuid} 🔎 ${clue.value.clue}`
+        );
       })
       .catch((reason) => {
         return interaction.reply({
